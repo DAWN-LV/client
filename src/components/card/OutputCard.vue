@@ -27,6 +27,7 @@ const icon = computed<IconName>(() => {
     case "journal": return "newspaper"
     case "paper": return "sheet_plastic"
     case "planner": return "note_sticky"
+    case "degree": return "scroll"
 
     case "notebook":
     case "diary":

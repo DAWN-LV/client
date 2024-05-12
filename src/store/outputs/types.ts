@@ -6,6 +6,7 @@ export type Type =
   | "planner" 
   | "photo_album"
   | "paper"
+  | "degree"
 
 export interface Ouput {
   type: Type
