@@ -34,7 +34,7 @@ async function onSubmit(ev: any) {
 
   const form = new FormData(ev.target)
   for (let [key, value] of form.entries()) {
-    data.value[key] = Math.floor(+value)
+    data.value[key] = +value
   }
 } 
 </script>
