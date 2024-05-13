@@ -9,32 +9,43 @@
       <form @submit.prevent="onSubmit">
         <div class="flex justify-between gap-12 mt-4">
           <InputSection class="flex-1"/>
-          <OutputSection :data="data" class="flex-1"/>
+          <OutputSection class="flex-1"/>
         </div>
-        <Button type="submit"variant="primary" label="Calculate"class="w-full text-lg mt-4"/>
+        <Button 
+          type="submit"
+          variant="primary" 
+          label="Calculate"
+          class="w-full text-lg mt-4"
+        />
       </form>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
+import { useOutputsStore } from "@/store/outputs"
 import Navbar from "@/layouts/Navbar.vue"
-import UnitsSection from "@/features/UnitsSection.vue"
-import OutputSection from "@/features/OutputSection.vue"
-import InputSection from "@/features/InputSection.vue"
+import UnitsSection from "@/features/units/UnitsSection.vue"
+import OutputSection from "@/features/output/OutputSection.vue"
+import InputSection from "@/features/input/InputSection.vue"
 import Button from "@/components/Button.vue"
 
-const data = ref<Record<string, number>>({})
+const { refresh } = useOutputsStore()
+
+function calculate(array: FormDataEntryValue[]) {
+  return array
+    .reduce((acc, cur) => acc + Number(cur), 0)
+}
 
 async function onSubmit(ev: any) {
-  ev.preventDefault()
-
-  data.value = {}
-
   const form = new FormData(ev.target)
-  for (let [key, value] of form.entries()) {
-    data.value[key] = +value
+
+  const dto = {
+    paper: calculate(form.getAll("paper")),
+    glue: calculate(form.getAll("glue")),
+    ink: calculate(form.getAll("ink"))
   }
+
+  await refresh(dto)
 } 
 </script>

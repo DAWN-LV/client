@@ -8,7 +8,7 @@ export type Type =
   | "paper"
   | "degree"
 
-export interface Ouput {
+export interface Output {
   type: Type
   info: {
     name: string

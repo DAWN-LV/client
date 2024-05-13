@@ -1,5 +1,5 @@
 <template>
-  <UnitCard :unit="unit" class="cursor-default">
+  <UnitCard :unit="unit" class="group cursor-default">
     <input 
       type="number"
       :name="unit.type"
@@ -9,12 +9,21 @@
       min="0"
       required
     />
+
+    <Button
+      variant="negative"
+      icon="xmark"
+      class="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 duration-150"
+      @click="$emit('remove')"
+    />
   </UnitCard>
 </template>
 
 <script setup lang="ts">
 import { Unit } from "@/store/units/types"
 import UnitCard from "@/components/card/UnitCard.vue"
+import Button from "@/components/Button.vue"
 
 defineProps<{ unit: Unit }>()
+defineEmits(["remove"])
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <BaseCard :icon="icon">
+  <BaseCard :title="output.info.name" :icon="icon">
     <div class="flex flex-col justify-center items-center">
       <div class="absolute -top-2 -right-2 p-2 uppercase text-xs text-gray-900 dark:text-white bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         {{ output.info.type }}
@@ -16,11 +16,11 @@
 
 <script setup lang="ts">
 import { computed } from "vue"
-import { Ouput } from "@/store/outputs/types"
+import { Output } from "@/store/outputs/types"
 import { IconName } from "@/components/icons"
 import BaseCard from "@/components/card/BaseCard.vue"
 
-const props = defineProps<{ output: Ouput }>()
+const props = defineProps<{ output: Output }>()
 
 const icon = computed<IconName>(() => {
   switch (props.output.type) {

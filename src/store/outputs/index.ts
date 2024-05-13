@@ -1,12 +1,13 @@
 import { ref } from "vue"
+import { Type } from "@/store/units/types"
 import { defineStore } from "pinia"
-import { Ouput } from "@/store/outputs/types"
+import { Output } from "@/store/outputs/types"
 import OutputsApi from "@/store/outputs/api"
 
 export const useOutputsStore = defineStore("outputs", () => {
-  const data = ref<Ouput[]>([])
+  const data = ref<Output[]>([])
 
-  async function refresh(dto: Record<string, number>) {
+  async function refresh(dto: Record<Type, number>) {
     await OutputsApi.findAll(dto).then(res => {
       data.value = res.data
     })
