@@ -9,6 +9,7 @@ export type Type =
   | "degree"
 
 export interface Output {
+  id: number
   type: Type
   info: {
     name: string

@@ -5,6 +5,7 @@
       <div class="flex flex-col justify-center w-full">
         <img src="./assets/images/default.png"/>
       </div>
+      <PointSection/>
       <UnitsSection/>
       <form @submit.prevent="onSubmit">
         <div class="flex justify-between gap-12 mt-4">
@@ -28,6 +29,7 @@ import Navbar from "@/layouts/Navbar.vue"
 import UnitsSection from "@/features/units/UnitsSection.vue"
 import OutputSection from "@/features/output/OutputSection.vue"
 import InputSection from "@/features/input/InputSection.vue"
+import PointSection from "@/features/point/PointSection.vue"
 import Button from "@/components/Button.vue"
 
 const { refresh } = useOutputsStore()

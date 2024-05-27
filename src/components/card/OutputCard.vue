@@ -1,5 +1,5 @@
 <template>
-  <BaseCard :title="output.info.name" :icon="icon">
+  <BaseCard :title="output.info.name" :icon="icon" class="cursor-pointer">
     <div class="flex flex-col justify-center items-center">
       <div class="absolute -top-2 -right-2 p-2 uppercase text-xs text-gray-900 dark:text-white bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         {{ output.info.type }}
