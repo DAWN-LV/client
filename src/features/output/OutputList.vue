@@ -13,14 +13,21 @@
 </template>
 
 <script setup lang="ts">
+import { watch } from "vue"
 import { Output } from "@/store/outputs/types"
 import { usePointsStore } from "@/store/points"
 import OutputCard from "@/components/card/OutputCard.vue"
 import SelectionList from "@/components/SelectionList.vue"
 
-defineProps<{ outputs: Output[] }>()
+const props = defineProps<{ outputs: Output[] }>()
 
 const store = usePointsStore()
+
+watch(props, ({ outputs }) => {
+  if (!outputs.length) {
+    store.clear()
+  }
+})
 
 function onSelect(output?: Output) {
   if (output) {

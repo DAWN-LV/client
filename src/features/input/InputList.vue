@@ -28,17 +28,24 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import { Unit } from "@/store/units/types"
+import { useOutputsStore } from "@/store/outputs"
 import Draggable from "vuedraggable"
 import InputCard from "@/components/card/InputCard.vue"
 import Button from "@/components/Button.vue"
 
+const store = useOutputsStore()
 const units = ref<Unit[]>([])
 
 function onRemove(idx: number) {
   units.value = units.value.filter((_, index) => index !== idx)
+
+  if (!units.value.length) {
+    onClear()
+  }
 }
 
-function onClear() {
-  units.value = []
+async function onClear() {
+  await store.clear()
+    .then(() => units.value = [])
 }
 </script>
