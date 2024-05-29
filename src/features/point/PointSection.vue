@@ -4,6 +4,7 @@
       <Timeline.Card
         v-for="point in store.data.points"
         :key="point.id"
+        :index="point.id"
         :content="point.description"
         :title="point.title"
       >
@@ -14,6 +15,12 @@
           </div>
         </template>
       </Timeline.Card>
+      <Timeline.Card 
+        v-if="lastPoint"
+        :index="lastPoint.id + 1"
+        title="Result" 
+        :content="`Total time spend on all stages: ${totalTime()}s`"
+        />
     </Timeline>
   </Transition>
 </template>
@@ -36,6 +43,25 @@ const count = computed(() => {
 
 function getResult(time: number) {
   return `${count.value * time}s`
+}
+
+const lastPoint = computed(() => {
+  if (store.data && store.data.points.length > 0) {
+    return store.data.points.at(-1)
+  }
+
+  return 0
+})
+
+function totalTime() {
+  if (store.data) {
+    let result = 0
+    for(const point of store.data.points) {
+      result += count.value * point.timePerOne
+    }
+    
+    return result
+  }
 }
 </script>
 
