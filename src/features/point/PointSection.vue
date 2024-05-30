@@ -2,7 +2,7 @@
   <Transition>
     <div v-if="store.data" class="my-12">
       <Timeline>
-        <PointList :points="store.data.points":count="count"/>
+        <PointList :points="store.data.points" :count="count"/>
       </Timeline>
       <Divider>Total time is</Divider>
       <h1 class="flex items-center justify-center text-5xl font-extrabold dark:text-white">
