@@ -3,7 +3,7 @@
     :list="units" 
     :group="{ name: 'units', pull: 'clone', put: false }" 
     item-key="type"
-    class="flex gap-4"
+    class="flex justify-center sm:justify-start flex-wrap gap-4"
   >
     <template #item="{ element }">
       <UnitCard :key="element.type" :unit="element"/>
