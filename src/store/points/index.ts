@@ -5,11 +5,11 @@ import { Points } from "@/store/points/types"
 import { Output } from "@/store/outputs/types"
 
 export const usePointsStore = defineStore("points", () => {
-  const data = ref<Points & { output: Output } | null>(null)
+  const data = ref<Points & { count: number } | null>(null)
 
   async function refresh(output: Output) {
     await PointsApi.findOne(output.id).then(res => {
-      data.value = Object.assign(res.data, { output })
+      data.value = Object.assign(res.data, { count: output.count })
     })
   }
 

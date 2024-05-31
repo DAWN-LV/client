@@ -9,6 +9,7 @@ import NoteSticky from "@/components/icons/svg/note-sticky.svg?raw"
 import Newspaper from "@/components/icons/svg/newspaper.svg?raw"
 import Scroll from "@/components/icons/svg/scroll.svg?raw"
 import Clock from "@/components/icons/svg/clock.svg?raw"
+import ChevronRight from "@/components/icons/svg/chevron-right.svg?raw"
 
 const icons = {
   sheet_plastic: SheetPlastic,
@@ -22,6 +23,7 @@ const icons = {
   newspaper: Newspaper,
   scroll: Scroll,
   clock: Clock,
+  chevron_right: ChevronRight,
 }
 
 export type IconName = keyof typeof icons

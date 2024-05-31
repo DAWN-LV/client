@@ -2,23 +2,26 @@
   <div class="flex flex-col flex-grow overflow-hidden">
     <Navbar class="fixed w-full"/>
     <div class="container mx-auto my-24 px-8 md:px-12">
-      <div class="flex flex-col justify-center w-full">
+      <div class="flex justify-center">
         <img src="./assets/images/default.png"/>
       </div>
       <PointSection/>
       <UnitsSection/>
-      <form @submit.prevent="onSubmit">
-        <div class="flex justify-between gap-12 mt-4">
-          <InputSection class="flex-1"/>
-          <OutputSection class="flex-1"/>
+      <div class="relative flex justify-between h-full gap-12 mt-4">
+        <form @submit.prevent="onSubmit" class="flex-1">
+          <InputSection class="min-h-60"/>
+          <Button 
+            type="submit"
+            variant="primary" 
+            label="Calculate"
+            class="w-full text-lg mt-4"
+          />
+        </form>
+        <Icon name="chevron_right" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 dark:text-white"/>
+        <div class="flex-1">
+          <OutputSection class="h-72 overflow-y-auto"/>
         </div>
-        <Button 
-          type="submit"
-          variant="primary" 
-          label="Calculate"
-          class="w-full text-lg mt-4"
-        />
-      </form>
+      </div>
     </div>
   </div>
 </template>
@@ -31,6 +34,7 @@ import OutputSection from "@/features/output/OutputSection.vue"
 import InputSection from "@/features/input/InputSection.vue"
 import PointSection from "@/features/point/PointSection.vue"
 import Button from "@/components/Button.vue"
+import Icon from "@/components/icons/Icon.vue"
 
 const { refresh } = useOutputsStore()
 
